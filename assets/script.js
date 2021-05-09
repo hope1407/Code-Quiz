@@ -1,6 +1,6 @@
 let timeEl = document.querySelector("#time");
 let questionEl = document.querySelector("#question")
-let secondsLeft = 5;
+let secondsLeft = 100;
 let endScreen = document.querySelector(".end-screen-elements")
 let ans1 = document.getElementById('ans1');
 let ans2 = document.getElementById('ans2');
@@ -69,6 +69,7 @@ function setTime() {
       timeEl.textContent = "Time: 0"
       secondsLeft = 0;
       highScore();
+      showHighScore();
     }
   }, 1000);
   startBtn.style.display = "none";
@@ -96,6 +97,7 @@ function startQuiz() {
   question.style.fontSize = "35px";
   question.textContent = questContent[0].quest;
   instructions.style.display = "none";
+  ansBtns.style.display = "block";
   ans1.style.display = "block";
   ans1.textContent = questContent[0].a
   ans2.style.display = "block";
@@ -176,18 +178,16 @@ document.querySelector("#save").addEventListener("click",function() {
   localStorage.setItem("highscores",JSON.stringify(existingData));
 
   //show
-  showHighScore();
 });
 
 document.querySelector("#clear").addEventListener("click", function(){
   localStorage.clear();
 });
-
+let template = "";
 const showHighScore = () => {
     //get local storage if it exists - old data
     const data = JSON.parse(localStorage.getItem("highscores")) || [];
     //create a template
-    let template = "";
     
     for (let i = 0; i < data.length; i++) {
       template += `
@@ -199,5 +199,9 @@ const showHighScore = () => {
     }
 
     document.querySelector(".ansBtns").innerHTML = template;
+    questionEl.textContent = "Highscores";
+    
+    instructions.style.display = "none";
   }
+
 document.querySelector("#highscore").addEventListener("click",showHighScore)
