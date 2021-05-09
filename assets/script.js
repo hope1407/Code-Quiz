@@ -1,6 +1,6 @@
 let timeEl = document.querySelector("#time");
 let questionEl = document.querySelector("#question")
-let secondsLeft = 50;
+let secondsLeft = 5;
 let endScreen = document.querySelector(".end-screen-elements")
 let ans1 = document.getElementById('ans1');
 let ans2 = document.getElementById('ans2');
@@ -8,7 +8,6 @@ let ans3 = document.getElementById('ans3');
 let ans4 = document.getElementById('ans4');
 let instructions = document.querySelector('#instructions');
 let startBtn = document.querySelector("#start");
-let startQui = "Start Quiz!"
 let questContent = [
   {
     quest: "Commonly used data types DO NOT include:",
@@ -34,7 +33,7 @@ let questContent = [
     b: "B. Curly Brackets",
     c: "C. Parenthesis",
     d: "D. Square Brackets",
-    answer: "D. Square Brackets"
+    answer: "C. Parenthesis"
   },
   {
     quest: "String values must be enclosed within ___ when being assigned to variables",
@@ -42,7 +41,7 @@ let questContent = [
     b: "B. Curly Brackets",
     c: "C. Quotes",
     d: "D. Parenthesis",
-    answer: "D. Parenthesis"
+    answer: "C. Quotes"
   },
 
   {
@@ -69,6 +68,7 @@ function setTime() {
       clearInterval(timerInterval);
       timeEl.textContent = "Time: 0"
       secondsLeft = 0;
+      highScore();
     }
   }, 1000);
   startBtn.style.display = "none";
@@ -86,7 +86,7 @@ function getBtnValue(event) {
     secondsLeft = secondsLeft-10;
   }
 }
-//startBtn.addEventListener('click', getBtnValue)
+
 ansBtns.addEventListener('click', getBtnValue)
 
 
@@ -145,7 +145,9 @@ function quest5() {
 };
 
 function highScore(){
-  //hide question container
+  if (secondsLeft <= 0) {
+    secondsLeft = 0;
+  }
   ansBtns.style.display = "none";
   //show the end screen elements
   //display the score
@@ -177,6 +179,9 @@ document.querySelector("#save").addEventListener("click",function() {
   showHighScore();
 });
 
+document.querySelector("#clear").addEventListener("click", function(){
+  localStorage.clear();
+});
 
 const showHighScore = () => {
     //get local storage if it exists - old data
@@ -187,7 +192,7 @@ const showHighScore = () => {
     for (let i = 0; i < data.length; i++) {
       template += `
       <div class="row">
-      <span>useranme: ${data[i].username}</span>
+      <span>username: ${data[i].username}</span>
       <span>score: ${data[i].score}</span>
       </div>
       `;
@@ -195,4 +200,4 @@ const showHighScore = () => {
 
     document.querySelector(".ansBtns").innerHTML = template;
   }
-  document.querySelector("#highscore").addEventListener("click",showHighScore)
+document.querySelector("#highscore").addEventListener("click",showHighScore)

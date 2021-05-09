@@ -63,4 +63,7 @@ margin-right: 300px;
 
 .end-screen-elements{
     display: none;
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
 }

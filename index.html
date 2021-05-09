@@ -10,8 +10,8 @@
 </head>
 <body>
     <header>
-        <div id="highscore">Highscores</div>
-        <div id="time">Time: 50</div>
+        <button id="highscore" onclick="showHighScore()">Highscores</button>
+        <div id="time">Time: 100</div>
         <h1 id="question">Coding Quiz Challenge</h1>
         <p id="instructions">Try to answer the following code related questions within the time limit.  Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         <button onclick="setTime()" onclick="startQuiz()" id='start'>Start Quiz!</button>
@@ -25,9 +25,7 @@
     <div class="end-screen-elements">
         <input id="user-name-input" type="text" placeholder="Enter Initials"/>
         <button id="save">Save Score</button>
-    </div>
-    <div class="highscore-container">
-        <div>Game Over</div>
+        <button id="clear">Clear Score</button>
     </div>
     <script src="./assets/script.js"></script>
 </body>
