@@ -1,0 +1,66 @@
+h1{
+    text-align: center;
+    color: purple;
+    font-size: 3em;
+    margin-top: 2.5em;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+p{
+text-align: center;
+font-size: 26px;
+margin-top: 5px;
+margin-left: 300px;
+margin-right: 300px;
+}
+
+#highscore {
+    font-size: 30px;
+    color: purple;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+}
+
+#time{
+    font-size: 30px;
+    color: purple;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+}
+
+#start{
+    margin: 0px 45% 0px 45%;
+    position: relative;
+    display: flex;
+    font-size: 26px;
+    padding: 2px;
+    background-color: purple;
+    color: white;
+}
+
+#ans1, #ans2, #ans3, #ans4 {
+    margin: 5px 40% 0px 40%;
+    position: relative;
+    display: none;
+    text-align: left;
+    flex-direction: column;
+    font-size: 26px;
+    padding: 2px;
+    background-color: purple;
+    color: white;
+}
+
+.highscore-container{
+    display: none;
+    text-align: center;
+    color: purple;
+    font-size: 3em;
+    top: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.end-screen-elements{
+    display: none;
+}
